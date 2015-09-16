@@ -78,7 +78,7 @@ ul>li {
 #headerleft a 
 {
 	margin-right: 15px;
-	color: #00280F;
+	color: #003F0F;
 	font-weight: normal;
 	font-family: Helvetica, Arial, sans-serif;
 	text-decoration: none;
@@ -129,7 +129,7 @@ a:hover
 }
 
 a {
-	color: #00280F;
+	color: #003F0F;
 	text-decoration: none;
 	font-weight: normal;
 }
