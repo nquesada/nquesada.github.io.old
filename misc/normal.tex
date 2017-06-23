@@ -1,16 +1,4 @@
-\documentclass[11pt,letterpaper]{article}
-\usepackage[english]{babel}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\pagestyle{empty}
-\textwidth = 16.5 cm
-\textheight = 24.5 cm
-\oddsidemargin = 0.0 cm
-\evensidemargin = 0.0 cm
-\topmargin = 0.0 cm
-\headheight = 0.0 cm
-\headsep = 0.0 cm 
+\documentclass[english,12pt]{shreyasnotes}
 \date{}
 
 \title{The normal ordered form of $(a+a^{\dagger})^n$}
@@ -56,11 +44,13 @@ The first few nontrivial evaluations yield
 \end{align}
 \end{subequations}
 To obtain the anti-normal ordered form of $\left(a+a^{\dagger} \right)^n$ simply take $X=a$ and $Y=a^{\dagger}$.\\ This function written in \emph{Mathematica} generates the normal ordered form for arbitrary $n$
+\begin{footnotesize}
 \begin{verbatim}
 NormalOrder[n_Integer] := 
 (Sum[(n!/(2^((n - m - k)/2)*((n - m - k)/2)!*k!*m!))*SuperDagger[a]^m ** a^k * 
 If[EvenQ[n - m - k], 1, 0], {m, 0, n}, {k, 0, n - m}] /. {1 ** a_ -> a, a_ ** 1 -> a})
 \end{verbatim}
+\end{footnotesize}
 
 
 

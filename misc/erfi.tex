@@ -1,11 +1,6 @@
-\documentclass[11pt,letterpaper]{article}
-\usepackage{graphicx}
-\usepackage[fleqn]{amsmath}
-\usepackage{amssymb}
-\usepackage{amsmath}
+\documentclass[english,12pt]{shreyasnotes}
+
 \usepackage{esint}
-\usepackage{fullpage}
-\usepackage{comment}
 
 \newcommand{\eq}[1]{\begin{align}#1\end{align}}
 \newcommand{\erfi}{\text{erfi}}
@@ -14,7 +9,7 @@
 
 \title{An identity involving the imaginary error function erfi($x$)}
 \author{Nicol\'as Quesada and Aaron Goldberg}
-\date{}
+\date{\today}
 \begin{document}
 \maketitle
 The imaginary error function erfi($x$) is customarily defined as $\erfi(x) = \frac{2}{\sqrt{\pi}} \int_0^x dt \ e^{t^2}$.
@@ -38,7 +33,7 @@ We here show that $\phi_1$ is, like $\phi_0$, $\mathcal{L}^2$-normalized; to thi
 \eq{
   I&=\int_{-\infty}^\infty dx \ \phi_1^2\left(x\right) =\mathcal{N}^2\sqrt{\frac{2}{\pi}}\int_{-\infty}^\infty dx  \exp\left(-2x^2\right)\erfi^2\left(\alpha x\right).
 }
-Note that this integral is, to the best of our knowledge, not currently tabulated in standard computer algebra systems (CAS) like Mathematica or Maple or the Wolfram Functions Site. 
+This integral is, to the best of our knowledge, not currently tabulated in standard computer algebra systems (CAS) like \href{http://www.wolfram.com/mathematica/}{Mathematica} or \href{http://www.maplesoft.com/}{Maple} or the \href{http://functions.wolfram.com/GammaBetaErf/Erfi/}{Wolfram Functions Site}. 
 We use Eq. (\ref{eq:erfi-principal-integral}) to write
 \begin{subequations}
 \eq{
