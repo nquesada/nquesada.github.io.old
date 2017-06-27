@@ -1,8 +1,5 @@
 \documentclass[english,12pt]{shreyasnotes}
 
-%\newcommand{\ket}[1]{| #1 \rangle}
-%\newcommand{\bra}[1]{\langle #1 |}
-%\newcommand{\braket}[1]{\langle #1 \rangle}
 \newcommand{\hc}{\text{H.c.}}
 \newcommand{\cc}{\text{c.c.}}
 \newcommand{\vac}{\text{vac}}
@@ -10,18 +7,17 @@
 \newcommand{\ii}{\mathrm{i}}
 \newcommand{\thf}{\text{TopHat}}
 \newcommand{\eq}[1]{\begin{align}#1\end{align}}
-%\DeclareMathOperator{\tr}{tr}
 
 
 
 \title{Fourier Transforms and Discrete Fourier Transforms}
 \author{Nicol\'as Quesada}
-
+\date{}
 \begin{document}
 \maketitle
 The Fourier Transform (FT) of a function can be defined as
 \eq{
-F(\omega)=\int_{-\infty}^\infty f(t) e^{-\ii \omega t}.
+F(\omega)=\int_{-\infty}^\infty dt \ f(t) e^{-\ii \omega t}.
 }
 We can approximate this integral by a Riemann sum
 \eq{

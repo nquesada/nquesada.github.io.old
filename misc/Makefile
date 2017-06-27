@@ -6,12 +6,15 @@
 %.dvi:%.tex
 	latex $^
 	latex $^
-all: atomic.pdf  bosonic.pdf  fourier.pdf erfi.pdf
+all: atomic.pdf  bosonic.pdf  fourier.pdf erfi.pdf normal.pdf sho.pdf shotd.pdf
 
 
 public:
 	cp *.pdf ~/Dropbox/Public
 
 clean:
-	rm *.aux *.log *.dvi *.ps *.out
+	rm -rf *.bcf *.aux *.log *.dvi *.ps *.out *.run.xml *.*~
+
+reclean:
+	rm -rf atomic.pdf  bosonic.pdf  fourier.pdf erfi.pdf normal.pdf sho.pdf shotd.pdf
 
