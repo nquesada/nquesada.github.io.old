@@ -1,0 +1,245 @@
+%==============================================================================
+%== template for LATEX poster =================================================
+%==============================================================================
+%
+%--A0 beamer slide-------------------------------------------------------------
+\documentclass[final]{beamer} % use beamer
+\usepackage[orientation=landscape,
+            size=a0,          % poster size
+            scale=1.6         % font scale factor
+           ]{beamerposter}    % beamer in poster size
+%
+%--some needed packages--------------------------------------------------------
+\usepackage[american]{babel}  % language 
+\usepackage[utf8]{inputenc}   % std linux encoding
+\usepackage[matrix,frame,arrow]{xypic}
+\usepackage{color}
+\usepackage{fancybox}
+\usepackage{tikz}
+%\newcommand{\ket}[1]{| #1 \rangle}
+%\newcommand{\bra}[1]{\langle #1 |}
+\newcommand{\braket}[1]{\langle #1 \rangle}
+\newcommand{\ea}{\emph{et al.}}
+\usetikzlibrary{shadows}
+
+%\usepackage[usenames,dvipsnames]{xcolor}
+\definecolor{brickred}{HTML}{B6321C}
+\definecolor{olivegreen}{HTML}{3C8031}
+\definecolor{navyblue}{HTML}{006EB8}
+\definecolor{brownish}{RGB}{109,0,32}
+\definecolor{redish}{RGB}{229,40,35}
+
+
+\newcommand{\eq}[1]{\begin{align}#1\end{align}}
+
+
+%\input{Qcircuit}
+
+
+%
+%==The poster style============================================================
+\usetheme{cpbgposter}            % our poster style
+%--set colors for blocks (without frame)---------------------------------------
+  \setbeamercolor{block title}{fg=ngreen,bg=white}
+  \setbeamercolor{block body}{fg=black,bg=white}
+%--set colors for alerted blocks (with frame)----------------------------------
+%--textcolor = fg, backgroundcolor = bg, dblue is the jacobs blue
+  \setbeamercolor{block alerted title}{fg=white,bg=dblue!70}%frame color
+  \setbeamercolor{block alerted body}{fg=black,bg=dblue!10}%body color
+%
+\newcommand{\dg}{^{\dagger}}
+\newcommand{\hc}{\mathrm{H.c.}}
+\newcommand{\cc}{\mathrm{c.c.}}
+\newcommand{\ee}[1] {\mathrm{e}^{#1}}
+\newcommand{\bra}[1] {\langle #1|}
+\newcommand{\ket}[1] {|#1\rangle}
+\newcommand{\name}{Self- and cross- phase modulation in the generation of bright twin beams using SPDC
+}
+
+%==Titel, date and authors of the poster=======================================
+%\title{Self-calibrating tomography for multi-dimensional systems}
+\title{\name}
+\author{Nicol\'as Quesada$^1$ and J.E Sipe $^2$}
+\institute[]
+          {$^1$Department of Physics and Astronomy, Macquarie University \\  $^2$Department of Physics,  University of Toronto}
+%\date{November 13, 2012}
+%
+%==some usefull qm commands====================================================
+%  |x>
+%\newcommand{\ket}[1]{\left\vert#1\right\rangle}
+\newcommand{\dbra}[1]{\langle \langle #1|}
+\newcommand{\dket}[1]{|#1 \rangle \rangle}
+%  <x|
+%\newcommand{\bra}[1]{\left\langle#1\right\vert}
+%  <x|y>
+%\newcommand{\braket}[2]{\left< #1 \vphantom{#2}\,
+%                        \right\vert\left.\!\vphantom{#1} #2 \right>}
+%  <x|a|y>
+\newcommand{\ks}[1]{\bar k_{#1}+\delta k_{#1}}
+\newcommand{\ws}[1]{\bar \omega_{#1}+\delta \omega_{#1}}
+
+\newcommand{\sandwich}[3]{\left< #1 \vphantom{#2 #3} \right|
+                          #2 \left|\vphantom{#1 #2} #3 \right>}
+%  d/dt
+\newcommand{\ddt}{\frac{d}{dt}}
+%  D/Dx
+\newcommand{\pdd}[1]{\frac{\partial}{\partial#1}}
+%  |x|
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+%  k_{x}
+\newcommand{\kv}[1]{\mathbf{k}_{#1}}
+%==============================================================================
+%==the poster content==========================================================
+%==============================================================================
+\usepackage{exscale}
+\begin{document}
+%--the poster is one beamer frame, so we have to start with:
+\begin{frame}[t]
+%--to seperate the poster in columns we can use the columns environment
+ \begin{columns}[t] % the [t] options aligns the columns content at the top
+%--the left column-------------------------------------------------------------
+  \begin{column}{0.33\paperwidth}% the right size for a 3-column layout
+%--abstract block--------------------------------------------------------------
+   \begin{alertblock}{Abstract}
+\begin{minipage}{0.18\textwidth}
+\begin{figure}[H]
+\includegraphics[width=1 \linewidth]{phase_qr.pdf}
+\end{figure}
+\end{minipage} \hfill
+\begin{minipage}{0.8\textwidth}
+\input{phase.abstract}
+\end{minipage}
+   \end{alertblock}
+   \vskip2ex
+\setbeamercolor{block alerted title}{fg=white,bg=dblue!70}
+\setbeamercolor{block alerted body}{fg=black,bg=white!30}
+
+
+\begin{alertblock}{Phase matching  and energy conservation in photon generation}
+In recent experiments \cite{harder,lemieux} bright sources of squeezed light have been engineered using $\chi^{(2)}$ nonlinearities. These sources cannot be described perturbatively and one needs to worry about higher order effects (e.g. $\chi^{3}$) that could also affect the states generated.
+%\hline
+\begin{block}{$\chi^2$ nonlinearities}
+Three modes $A,B,C$ interact via a $\chi^{(2)}$ nonlinear susceptibility
+\begin{align*}
+H_2\sim\int dz \chi^{(2)}(z) \left( \sum_{M=A,B,C} a_M(\omega_M)e^{i (\ks{M})z-i (\ws{M}) t} + \hc \right)^{3}
+\end{align*}
+where $\bar k_M = \bar \omega_M/\underbrace{v_M^{(p)}}_{\text{phase vel.}}$ and $\delta k_M = \delta \omega_M/\underbrace{v_M^{(g)}}_{\text{group vel.}}$.
+For
+\begin{align*}
+\bar \omega_A + \bar \omega_B = \bar \omega_C \text{ and }  \bar k_A + \bar k_B = \bar k_C ,
+\end{align*} 
+the only term that is relevant is $H_{\text{SPDC}}\sim a_A ^\dagger a_B^\dagger a_C+\hc$
+\end{block}
+%\hline
+\begin{block}{$\chi^3$ nonlinearities}
+Three modes $A,B,C$ interact via a $\chi^{(3)}$ nonlinear susceptibility
+\begin{align*}
+H_3\sim \int dz \chi^{(3)}(z) \left( \sum_{M=A,B,C} a_M(\omega_M)e^{i (\ks{M})z-i (\ws{M}) t} + \hc \right)^{4}
+\end{align*}
+\begin{itemize} 
+\item \textcolor{brownish}{Terms like $a_A^\dagger a_A a_C^\dagger a_C $ always survive.}
+\item If mode $C$ is a strong coherent state it will create a nonlinear index of refraction for itself $H_{\text{SPM}} \sim a_C^\dagger a_C a^\dagger_C a_C$: \emph{self-phase modulation (SPM)}.
+\item It will also cause a nonlinear index of refraction for the other modes $H_{\text{XPM}} \sim a_A^\dagger a_A a^\dagger_C a_C$: \emph{cross-phase modulation (XPM)}
+\end{itemize}
+\end{block}
+\end{alertblock}
+
+\end{column}
+%===big rightcolumn=============================================================
+
+
+\begin{column}{0.34\paperwidth} 
+\setbeamercolor{block alerted title}{fg=white,bg=dblue!70}
+\setbeamercolor{block alerted body}{fg=black,bg=white!30}
+\begin{alertblock}{Accounting for the effects of SPM and XPM}
+In the strong driven regime one needs to consider both the photon generation via SPDC and the SPM and XPM:
+\begin{align*}
+H=H_{\text{SPDC}}+H_{\text{XPM}}+H_{\text{SPM}}.
+\end{align*}
+%One can go to an interaction picture with respect to $H_{\text{XPM}}+H_{\text{SPM}}$ 
+If the pump is a strong coherent state $a_C(\omega_C)\to \langle a_C(\omega_C) \rangle = \alpha_C(\omega_C)$
+\begin{align*}
+\label{hi}
+ H_{\text{SPDC}} \sim  \int dz \chi^{(2)}(z) \int d\omega _A d\omega
+_B d\omega _P e^{i(\delta k _P-\delta k_A-\delta k_B) z}  \\
+e^{i (\delta \omega_A+\delta \omega_B-\delta \omega_P) t} \alpha_C(\omega_C)  a_A^{\dagger }(\omega_A)  a_B^{\dagger }(\omega _B),
+\end{align*}
+\begin{itemize}
+\item Free propagation is accounted for by the phases $e^{i (\delta k z -\delta \omega t)}$.
+
+\item \textcolor{brownish}{Go to an interaction picture with respect to $H_{\text{XPM}}$ and $H_{\text{SPM}}$.}
+\item \textcolor{brownish}{This is done by including an extra propagation phase }
+\end{itemize}
+\begin{align*}
+\Gamma_{A/B}(z,t)=2 \int^t dt''\chi^{(3)}(z-v_{A/B} (t-t'')) |\phi_C(z-v_{A/B}(t-t''),t'')|^2,
+\end{align*}
+\begin{itemize}
+\item  $\chi^3(z)$ describes the spatial profile of the XPM nonlinearity. 
+\item For the pump mode undergoing SPM, one should replace $v_{A/B}$ by $v_P$ and remove the prefactor of 2.
+\item $\phi_P(z,t)=\int \frac{d\omega_P}{\sqrt{2 \pi v_P}} \alpha(\omega_P) e^{-i (\omega_P- \bar \omega_P)(t-z/v_P)}$ is the pump profile in real space.
+\end{itemize}
+Upon the inclusion of SPM and XPM and taking 
+\begin{align*}
+\alpha(\omega_c)=\frac{\tau}{\sqrt{\pi}} \exp(-\tau^2 \delta \omega_c^2)
+\end{align*} 
+we can rewrite the interaction picture Hamiltonian as
+\begin{align*}
+H_I(t)=-\hbar \varepsilon\int d\omega_A d\omega_B d\omega_P F(\omega_A,\omega_B,\omega_P) e^{i(\delta \omega_A +\delta \omega_B - \delta \omega_P)t} \\
+a^\dagger(\omega_A) b^\dagger(\omega_B)+\hc
+\end{align*}
+where $F(\omega_A,\omega_B,\omega_P)=\mathcal{F}\left(-(\delta \omega_A/v_A+\delta \omega_B/v_B),\omega_P\right),$  and
+\begin{align*}
+\mathcal{F}(q,\omega_P)&=\int \frac{dz}{\sqrt{2 \pi}} \frac{dt}{\sqrt{2 \pi}} \mathcal{G}(z,t) e^{i (q z + \delta \omega_P t)}, \\ \mathcal{G}(z,t)&= \frac{\chi^{(3)}(z)}{L}  e^{-(z-v_P t)^2/(4 v_P^2 \tau^2)} e^{-i \Gamma(z,t)}
+\end{align*}
+are a 2D Fourier transform pair in the spaces $(q,\omega_P)$,  $(z,t)$ and 
+\begin{align*}
+\Gamma=\Gamma_A+\Gamma_B-\Gamma_P.
+\end{align*}
+The joint spectral amplitude is: 
+\begin{align*}
+ J_1(\omega_A,\omega_B)=F(\omega_A,\omega_B,\omega_A+\omega_P).
+\end{align*}
+
+\end{alertblock}
+
+\end{column}
+
+
+  \begin{column}{0.30\paperwidth} 
+\setbeamercolor{block alerted title}{fg=white,bg=dblue!70}
+\setbeamercolor{block alerted body}{fg=black,bg=white!30}
+\begin{alertblock}{Consequences for SPDC}
+\begin{itemize}
+\item The spectral structure: the Schmidt decomposition \\
+ $J_1(\omega_A,\omega_B)=\sum_\lambda s_\lambda f_\lambda (\omega_A) j_\lambda(\omega_B)$. 
+\item The Schmidt coefficients satisfy $\sum_\lambda s_\lambda^2=\int d \omega_A d\omega_B |J_1(\omega_A,\omega_B)|^2$.
+\item XPM and SPM will not affect the norm of the JSA since
+\begin{align*}
+\int d \omega_A d\omega_B |J_1(\omega_A,\omega_B)|^2&= \mathcal{J} \int d \omega_P dq |\mathcal{F}(q,\omega_P)|^2 \\
+&= \mathcal{J}  \int dz dt|\mathcal{G}(q,\omega_P)|^2,
+\end{align*}
+where $\mathcal{J}=\frac{v_A v_B}{|v_A-v_B|}$ is the Jacobian of  $(\omega_P=\omega_A+\omega_B,q=-(\delta \omega_A/v_A+\delta \omega_B/v_B))$ and we used Parseval's theorem.
+\item The number of photons will be smaller than than would be predicted if XPM and SPM where ignored since
+\begin{align*}
+\braket{ \tilde N^{\text{no XPM-SPM}}_{A/B}}=\sum_{\lambda} \sinh^2\left( \sqrt{s_\lambda^2} \right) \leq  \sinh^2 \left( \sqrt{ \sum_{\lambda} s_\lambda^2}\right) \\
+=\sinh^2 \left( \sqrt{ \tilde s_0^2}\right)=\braket{N_{A/B}}.
+\end{align*}
+In the last derivation time-ordering effects have been assumed to be negligible \cite{nico1}.\\
+\textcolor{brownish}{XPM and SPM leads to additional Schmidt modes and reduces estimulation}
+\end{itemize}
+
+\end{alertblock}
+
+\begin{alertblock}{References}
+\begin{thebibliography}{99}
+\bibitem{harder} G. Harder \ea, ``Single-Mode Parametric-Down-Conversion States with 50 Photons as a Source for Mesoscopic Quantum Optics'', Phys. Rev. Lett. {\bf 116}, 143601 (2016).
+\bibitem{lemieux} S. Lemieux \ea, ``Engineering the Frequency Spectrum of Bright Squeezed Vacuum via Group Velocity Dispersion in an SU(1,1) Interferometer'', Phys. Rev. Lett. {\bf 117}, 183601 (2016).
+\bibitem{nico1} N. Quesada and J.E. Sipe, ``Time-ordering effects in the generation of entangled photons using nonlinear optical processes'', Phys. Rev. Lett. {\bf 114} , 093903 (2015).
+\end{thebibliography}
+\end{alertblock}
+
+  \end{column}
+ \end{columns}
+\end{frame}
+
+\end{document}

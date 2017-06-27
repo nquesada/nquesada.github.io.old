@@ -1,0 +1,291 @@
+%==============================================================================
+%== template for LATEX poster =================================================
+%==============================================================================
+%
+%--A0 beamer slide-------------------------------------------------------------
+\documentclass[final]{beamer} % use beamer
+\usepackage[orientation=landscape,
+            size=a0,          % poster size
+            scale=1.6         % font scale factor
+           ]{beamerposter}    % beamer in poster size
+%
+%--some needed packages--------------------------------------------------------
+\usepackage[american]{babel}  % language 
+\usepackage[utf8]{inputenc}   % std linux encoding
+\usepackage[matrix,frame,arrow]{xypic}
+\usepackage{color}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{float}
+
+\usetikzlibrary{shadows}
+
+%\usepackage[usenames,dvipsnames]{xcolor}
+\definecolor{brickred}{HTML}{B6321C}
+\definecolor{olivegreen}{HTML}{3C8031}
+\definecolor{navyblue}{HTML}{006EB8}
+
+
+\definecolor{ShadowColor}{RGB}{109,0,32}
+
+
+\definecolor{brownish}{RGB}{109,0,32}
+\definecolor{redish}{RGB}{229,40,35}
+
+%\input{Qcircuit}
+
+
+%
+%==The poster style============================================================
+\usetheme{cpbgposter}            % our poster style
+%--set colors for blocks (without frame)---------------------------------------
+  \setbeamercolor{block title}{fg=ngreen,bg=white}
+  \setbeamercolor{block body}{fg=black,bg=white}
+%--set colors for alerted blocks (with frame)----------------------------------
+%--textcolor = fg, backgroundcolor = bg, dblue is the jacobs blue
+  \setbeamercolor{block alerted title}{fg=white,bg=dblue!70}%frame color
+  \setbeamercolor{block alerted body}{fg=black,bg=dblue!10}%body color
+%
+\newcommand{\dg}{^{\dagger}}
+\newcommand{\hc}{\mathrm{h.c.}}
+\newcommand{\cc}{\mathrm{c.c.}}
+\newcommand{\ee}[1] {\mathrm{e}^{#1}}
+\newcommand{\bra}[1] {\langle #1|}
+\newcommand{\ket}[1] {|#1\rangle}
+\newcommand{\name}{Why you should \emph{not} use the electric field \\
+to quantize in nonlinear optics
+}
+
+%==Titel, date and authors of the poster=======================================
+\title{\name}
+\author{Nicol\'as Quesada$^1$ and J.E Sipe $^2$}
+\institute[]
+          {$^1$Department of Physics and Astronomy, Macquarie University \\  $^2$Department of Physics,  University of Toronto}
+%\date{November 13, 2012}
+%
+%==some usefull qm commands====================================================
+%  |x>
+%\newcommand{\ket}[1]{\left\vert#1\right\rangle}
+\newcommand{\dbra}[1]{\langle \langle #1|}
+\newcommand{\dket}[1]{|#1 \rangle \rangle}
+%  <x|
+%\newcommand{\bra}[1]{\left\langle#1\right\vert}
+%  <x|y>
+%\newcommand{\braket}[2]{\left< #1 \vphantom{#2}\,
+%                        \right\vert\left.\!\vphantom{#1} #2 \right>}
+%  <x|a|y>
+\newcommand{\sandwich}[3]{\left< #1 \vphantom{#2 #3} \right|
+                          #2 \left|\vphantom{#1 #2} #3 \right>}
+%  d/dt
+\newcommand{\ddt}{\frac{d}{dt}}
+%  D/Dx
+\newcommand{\pdd}[1]{\frac{\partial}{\partial#1}}
+%  |x|
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+%  k_{x}
+\newcommand{\kv}[1]{\mathbf{k}_{#1}}
+%==============================================================================
+%==the poster content==========================================================
+%==============================================================================
+\usepackage{exscale}
+%\usepackage{wrapfigure}
+%\usepackage{minipage}
+\begin{document}
+%--the poster is one beamer frame, so we have to start with:
+\begin{frame}[t]
+%--to seperate the poster in columns we can use the columns environment
+ \begin{columns}[t] % the [t] options aligns the columns content at the top
+%--the left column-------------------------------------------------------------
+  \begin{column}{0.32\paperwidth}% the right size for a 3-column layout
+%--abstract block--------------------------------------------------------------
+   \begin{alertblock}{Abstract}
+\begin{minipage}{0.18\textwidth}
+\begin{figure}[H]
+\includegraphics[width=1 \linewidth]{quantization_qr.pdf}
+\end{figure}
+\end{minipage} \hfill
+\begin{minipage}{0.8\textwidth}
+\input{quantization.abstract}
+\end{minipage}
+   \end{alertblock}
+   \vskip2ex
+
+\setbeamercolor{block alerted title}{fg=white,bg=dblue!70}
+\setbeamercolor{block alerted body}{fg=black,bg=white!30}
+
+
+\begin{alertblock}{Quantization recipe}
+%The quantization of the EM field as a long history going back to Born and Infeld[1]. 
+
+\begin{enumerate}
+\item Write a Hamiltonian $H$ in terms of the relevant fields $\mathbf{F}$ so that it is numerically equal to the energy.
+\item Define a set of canonical commutation relations for the fields.
+\item \textcolor{brownish}{Check that the Heisenberg equations of motion (EOM) }
+\begin{align}
+\dot{ \mathbf{F} }   = \frac{[\mathbf{F},H]}{i \hbar}
+\end{align}
+\textcolor{brownish}{are the Equations of Motion for the fields} \cite{sipe}.\\
+\end{enumerate}
+
+
+\bigskip
+For the Electromagnetic field (EMF) for example \cite{sipe,drummond}:
+\item The Hamiltonian is 
+\begin{align}
+H&=\int d^3 \mathbf{r} \left(\frac{\mathbf{B}^2}{2 \mu_0}+  \epsilon_0 \mathbf{E} \cdot \left\{ \frac{1+\chi^{(1)}}{2}\mathbf{E} + \sum_{n \geq 2} \frac{n}{n+1}  \mathbf{\chi}^{(n)} : \mathbf{E}^n \right\} \right)\\
+&=\int d^3\mathbf{r} \left(\frac{\mathbf{B}^2}{2 \mu_0} +\sum_{n\geq 1}\frac{1}{n+1}\mathbf{D}\cdot \mathbf{\eta}^{(n)} : \mathbf{D}^n\right)
+\end{align}
+The (only nonzero) commutation relation is 
+\begin{align}
+[D^i(\mathbf{r}),B^j(\mathbf{r'})]=i\hbar \epsilon^{ijk} \frac{\partial}{\partial r^k} \delta(\mathbf{r}-\mathbf{r}')
+\end{align}
+and the Heisenberg EOMs are Maxwell's equations
+\begin{align}
+\dot{\mathbf{D}} = \nabla \times  \mathbf{B}/\mu_0, \quad & \dot{\mathbf{B}} = -\nabla \times  \mathbf{E}
+\end{align}
+if the following constitutive relation is assumed 
+\begin{align}\label{const}
+\mathbf{E}=\frac{\mathbf{D}-\mathbf{P}}{\epsilon_0} = \sum_{n}\mathbf{\eta}^{(n)}: \mathbf{D}^n
+\end{align}
+which defines macroscopic polarization in terms of $\mathbf{D}$ and $\eta^{(n)}$. \\
+Also can define in terms of $\mathbf{E}$ and nonlinear susceptibilities $\chi^{(n)}$
+\begin{align}
+\eta^{(1)} = \epsilon_0^{-1} (1+\chi^{(1)})^{-1}, \\
+\eta^{(2)}=-\epsilon_0 \eta^{(1)} \chi^{(2)}: \eta^{(1)} \eta^{(1)}
+\end{align}
+{\color{white} empty}
+\end{alertblock}
+
+\end{column}
+%===big rightcolumn=============================================================
+
+
+\begin{column}{0.34\paperwidth} 
+\setbeamercolor{block alerted title}{fg=white,bg=dblue!70}
+\setbeamercolor{block alerted body}{fg=black,bg=white!30}
+\begin{alertblock}{What goes wrong with the electric field?}
+%\colorbox{redish}{
+{\Large
+\begin{eqnarray*}
+\shadowbox{
+\parbox[c]{18.5em}{
+\quad \ \textcolor{redish}{Can you quantize with  $\mathbf{E}$ and still satisfy \\ Maxwell's Equations in a nonlinear medium?}}}
+\end{eqnarray*}
+}
+
+%}
+%\begin{center}
+%  \begin{tikzpicture}
+%    \node [copy shadow={fill=black,shadow xshift=-0.5ex,shadow yshift=-0.5ex},
+%            fill=white!20,draw=black,thick] {Can one quantize with $\mathbf{E}$ and still get \\
+%Maxwell's Equations in a nonlinear medium?};
+%  \end{tikzpicture}
+%\end{center}
+
+%\begin{block}{Can one quantize with $\mathbf{E}$ and still get Maxwell's Equations in a nonlinear medium?}
+Let's try to write
+\begin{align}
+\mathbf{E}(\mathbf{r})& = \sum_J \int d{\mathbf{k}} \ \mathbf{e}_J(\mathbf{k},\mathbf{r}) a_{J}(\mathbf{k})+\text{H.c.} = \text{poly}_1(  a_J(\mathbf{k}),  a_J(\mathbf{k})^\dagger)\nonumber\\
+\mathbf{B}(\mathbf{r})& = \sum_J \int d{\mathbf{k}} \ \mathbf{b}(\mathbf{k},\mathbf{r}) a_J(\mathbf{k})+\text{H.c.}=\text{poly}_1(  a_J(\mathbf{k}),  a_J(\mathbf{k})^\dagger), \nonumber\\
+&[ a_J(\mathbf{q}),  a_{J'}^\dagger(\mathbf{q'})]=\delta_{J J'}\delta(\mathbf{q'}- \mathbf{q}) 
+\end{align}
+%\begin{center}
+%\begin{tabular}{c |c |c }
+% Label & 1D & 3D \\ 
+%\hline
+% $J$ & Spatial Mode& Polarization \\  
+%\hline
+% $\mathbf{k}$ & $k_z$ & $(k_x,k_y,k_z) $
+%\end{tabular}
+%\end{center}
+$\text{poly}_n(x,y)$: polynomial of degree $n$ in variables $x,y$. Then,
+\begin{align}
+H = \text{poly}_{n+1}(  a_J(\mathbf{k}),  a_J(\mathbf{k})^\dagger) (\text{if } \chi^{(n)} \neq 0)
+\end{align}
+Now let us look at Faraday's law of induction
+\begin{align}\label{cont}
+-\nabla \times \mathbf{E} &= [\mathbf{B},H] /(i \hbar)= \dot{ \mathbf{B}} \nonumber\\
+\text{poly}_1(  a_J(\mathbf{k}),  a_J(\mathbf{k})^\dagger) &\stackrel{?}{=} [ \text{poly}_1(  a_J(\mathbf{k}),  a_J(\mathbf{k})^\dagger), \text{poly}_{n+1}(  a_J(\mathbf{k}),  a_J(\mathbf{k})^\dagger)]\nonumber\\
+\text{poly}_1(  a_J(\mathbf{k}),  a_J(\mathbf{k})^\dagger) &\stackrel{?}{=} \text{poly}_n(  a_J(\mathbf{k}),  a_J(\mathbf{k})^\dagger) 
+\end{align}
+The electric field has to be a \emph{nonlinear} function of $ a_J(\mathbf{k}),  a_J(\mathbf{k})^\dagger $.\\
+{\Large
+\begin{equation*}
+\shadowbox{
+\textcolor{redish}{\text{No, you cannot.}}
+}
+\end{equation*}
+}
+\end{alertblock}
+\begin{alertblock}{Quantization with $\mathbf{D}$}
+If quantization is done with $\mathbf{D}$ and $\mathbf{B}$ then
+\begin{align}
+\mathbf{D}(\mathbf{r})& = \sum_J \int d{\mathbf{k}} \ \mathbf{d}_J(\mathbf{k},\mathbf{r}) a_{J}(\mathbf{k})+\text{H.c.} 
+\end{align}
+Constitutive relation Eq. (\ref{const}) gives $\mathbf{E}$ as a \emph{nonlinear} function of the creation and annihilation operators
+\begin{align}\label{Epow}
+\mathbf{E}&=\frac{\mathbf{D}-\mathbf{P}}{\epsilon_0} = \underbrace{\eta^{(1)} \mathbf{D}}_{\mathbf{E}_{\text{linear}}}+\sum_{n>1}\mathbf{\eta}^{(n)}: \mathbf{D}^n\\
+&=\sum_{n}\mathbf{\eta}^{(n)}: \left(\sum_J \int d{\mathbf{k}} \ \mathbf{d}_J(\mathbf{k},\mathbf{r}) a_{J}(\mathbf{k})+\text{H.c.}\right)^n
+\end{align}
+This same conclusion is found by looking at Eq. (\ref{cont}).
+\end{alertblock}
+\end{column}
+
+
+  \begin{column}{0.30\paperwidth} 
+\setbeamercolor{block alerted title}{fg=white,bg=dblue!70}
+\setbeamercolor{block alerted body}{fg=black,bg=white!30}
+\begin{alertblock}{Consequences for bright SPDC}
+%Spontaneous Parametric Down-Conversion in 1-D geometry:
+\begin{itemize}
+\item 3 guided modes on a waveguide labeled $A,B,C$ 
+\item Phase and energy matched
+\begin{align}
+\bar k_C= \bar k_A+\bar k_B \text{ and }  \bar \omega_C = \bar \omega_A + \bar \omega_B.
+\end{align}
+\item Nonlinear part of the Hamiltonian in the interaction picture with respect to free propagation is
+\begin{align}
+\label{eq}
+H_I(t)=&\hbar \theta' \int dk_A dk_B dk_C  e^{i (\omega_A(k_A)+\omega_B(k_B)-\omega_C(k_C)) t} 
+\\& \times \Phi(k_A,k_b,k_c) a_A^\dagger(k_A) a_B^\dagger(k_B) a_C (k_C) +\text{H.c.}\nonumber
+\end{align}
+\end{itemize}
+{\Large
+\begin{eqnarray*}
+\shadowbox{
+\parbox[c]{17.5em}{
+\textcolor{redish}{Using $\mathbf{E}_\text{linear}$ the  interaction picture Hamiltonian is a factor of two larger than what is predicted with the correct quantization.}}}
+\end{eqnarray*}
+}
+\textcolor{brownish}{Compare factor of $\frac{n}{n+1}$ in Eq. (2) vs. $\frac{1}{n+1}$ in Eq. (3).}
+\end{alertblock}
+
+\begin{alertblock}{Effect on twin beams generation}
+%The correct expression for this Hamiltonian is on the other a factor of to smaller. 
+\begin{itemize}
+\item Mode $C$ in coherent state with $ N \gg 1$ photons: 
+\begin{align}
+a_C(k_C) \sim \langle a_C(k_C) \rangle=\sqrt{N} \alpha(k_C)
+\end{align}
+\item The mean number of photons in the twin beams is 
+\begin{align}
+\langle N_{A/B} \rangle=\sinh^2(\theta \sqrt{N}).
+\end{align} 
+\item With $\mathbf{E}_{\text{linear}}$: $\langle N_{A/B \text{ linear}} \rangle=4\langle N_{A/B} \rangle^2.$
+\end{itemize}
+%\end{block}
+\end{alertblock}
+
+\begin{alertblock}{References}
+\begin{thebibliography}{99}
+\bibitem{sipe} J.E. Sipe, \emph{et al.}, ``Effective field theory for the nonlinear optical properties of photonic crystals'', Phys. Rev. E {\bf 69}, 016604 (2004).
+\bibitem{drummond} P.D. Drummond and M. Hillery, \emph{The Quantum Theory of Nonlinear Optics}, (Cambridge, 2014).
+\bibitem{hillery} M. Hillery, \emph{et al.}, ``Quantization of electrodynamics in nonlinear media'', Phys. Rev. A {\bf 30}, 1860 (1984).
+\end{thebibliography}
+\end{alertblock}
+
+  \end{column}
+ \end{columns}
+\end{frame}
+
+\end{document}

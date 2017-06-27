@@ -1,0 +1,120 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                   File: OSAmeetings.tex             %
+%                  Date: March 21, 2007  MSD          %
+%                                                     %
+%     For preparing LaTeX manuscripts for submission  %
+%       submission to OSA meetings and conferences    %
+%                                                     %
+%       (c) 2007 Optical Society of America           %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letterpaper,10pt]{article}
+\usepackage{osameet2}
+\usepackage{comment}
+%% standard packages and arguments should be modified as needed
+
+\usepackage{amsmath,amssymb}
+
+
+\usepackage[pdftex,colorlinks=true,bookmarks=false,citecolor=blue,urlcolor=blue]{hyperref} %pdflatex
+%\usepackage[dvips,colorlinks=true,bookmarks=false,citecolor=blue,urlcolor=blue]{hyperref} %latex w/dvips
+
+\newcommand{\uu}{\mathcal{U}}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\pr}[1] {\ket{#1}\bra{#1}}
+\newcommand{\sinc}{\text{sinc}}
+\newcommand{\cc}{\text{c.c.}}
+\newcommand{\ea}{\emph{et al.}}
+\newcommand{\poly}{\text{poly}}
+\newcommand{\ket}[1]{| #1 \rangle}
+\newcommand{\bra}[1]{\langle #1 |}
+\newcommand{\braket}[1]{\langle #1 \rangle}
+\newcommand{\hc}{\text{H.c.}}
+\newcommand{\vac}{\text{\vac}}
+\newcommand{\h}{\hat}
+\newcommand{\thf}{\text{TopHat}}
+\newcommand{\eq}[1]{\begin{align}#1\end{align}}
+
+
+
+\begin{document}
+\title{The effects of self- and cross- phase modulation in the generation of bright twin beams using SPDC}
+
+\author{Nicol\'as Quesada$^1$ and J.E. Sipe $^2$}
+\address{$^1$ Department of Physics \& Astronomy, Macquarie University, NSW 2109, Australia \\ $^2$ Department of Physics, University of Toronto, Toronto, ON, M5S1A7, Canada}
+\email{sipe@physics.utoronto.ca}
+
+\begin{abstract}
+\input{phase.abstract}
+\end{abstract}
+
+\ocis{190.0190, 190.4223, 270.6570}
+
+\section{Introduction}
+Progress in phase-matching engineering and microfabrication has led to the production of twin beams with unprecedented brightness in a very small set of spatio-temporal modes \cite{harder,lemieux}. These bright nonclassical sources use spontaneous parametric down-conversion (a $\chi^2$ process) to fission a single photon from the incoming pump beam into a pair of photons in the signal and idler beams whose, central frequencies $\bar \omega_{S/I}$ and wave-vectors $\bar k_{S/I}$ are constrained by energy and momentum conservation,
+\begin{align}\label{cons}
+\bar \omega_P-\bar \omega_S-\bar \omega_I=0 \text{ and } \bar k_P-\bar k_S-\bar k_I=0.
+\end{align}
+Until very recently, SPDC sources were mostly used to generate states containing just a few pairs of photons. This parameter regime allowed us to (a) understand the problem in a perturbative manner and (b) ignore higher order nonlinear processes mediated, for example, by a $\chi^3$ nonlinearity. If one assumes that Eqs. (\ref{cons}) are satisfied, it is impossible to phase match a $\chi^3$ spontaneous four-wave mixing process for the same signal and idler. Yet, processes like self- and cross- mode modulation (SPM and XPM), where the pump modifies the index of refraction seen by itself or the signal and idler modes, are automatically phase-matched and can play an important role in the generation of nonclassical light. In this contribution, we explore the effects of SPM and XPM in the intensity of the twin beams generated using SPDC.
+
+\section{Including $\chi^3$ effects in the Hamiltonian}
+In a quasi 1D geometry  (e.g. a waveguide), SPDC can be modelled by the following Hamiltonian:
+\eq{\label{hi}
+\h H_I(t)=-\hbar \varepsilon \int d\omega _A d\omega
+_B d\omega _P \int \frac{dz}{L} \xi(z) e^{i(k(\omega _P)-k_A(\omega
+_A)-k_B(\omega _B)) z}  e^{i (\omega_A+\omega_B-\omega_P) t} \alpha(\omega_P) \h a^{\dagger }(\omega_A) \h b^{\dagger }(\omega _B),
+}
+where we have assumed that mode $P$ is prepared in a strong coherent state, that remains undepleted during the interaction, and $\xi(z)$ characterizes the spatial profile of the $\chi^2$ nonlinearity. The last equation explicitly shows that the free propagation of each mode simply adds a phase of the form $e^{i (k(\omega) z-\omega t)}$ to each mode. The effect of SPM and XPM will be to introduce a phase $e^{-i\Gamma_{A/B/C}(z,t)}$ proportional to the intensity of the pump mode profile in real space $\phi_P(z,t)=\int \frac{d\omega_P}{\sqrt{2 \pi v_P}} \alpha(\omega_P) e^{-i (\omega_P- \bar \omega_P)(t-z/v_P)}$
+. Explicitly, 
+\eq{
+\Gamma_{A/B}(z,t)=2 \int^t dt''\zeta(z-v_{A/B} (t-t'')) |\phi_C(z-v_{A/B}(t-t''),t'')|^2,
+}
+where $\zeta(z)$ describes the spatial profile of the $\chi^3$ nonlinearity. For the pump mode undergoing SPM, one should replace $v_{A/B}$ by $v_P$ and remove the prefactor of 2. In the last equation, $v_I$ is the group velocity of the $i^{\text{th}}$ mode which allows us to relate wave vectors and frequencies as $v_I \delta k_I=v_I(k_I-\bar k_I)=\omega_I-\bar \omega_I=\delta \omega_I$ (we assumed a negligible group velocity dispersion within the frequency range of the relevant modes). Note that $\zeta(z)$ and $\xi(z)$ need not have the same shape since poling the $\chi^2$ profile does not change the $\chi^3$ properties of the crystal.
+
+\section{Effects of SPM and XPM in the joint spectral amplitude of the twin beams}
+Upon the inclusion of SPM and XPM and taking $\alpha(\omega_c)=\frac{\tau}{\sqrt{\pi}} \exp(-\tau^2 \delta \omega_c^2)$ we can rewrite Eq. (\ref{hi}) as
+\eq{
+H_I(t)=-\hbar \varepsilon\int d\omega_A d\omega_B d\omega_P F(\omega_A,\omega_B,\omega_P) e^{i(\delta \omega_A +\delta \omega_B - \delta \omega_P)t}\h a^\dagger(\omega_A) \h b^\dagger(\omega_B)+\hc
+}
+where $F(\omega_A,\omega_B,\omega_P)=\mathcal{F}\left(-(\delta \omega_A/v_A+\delta \omega_B/v_B),\omega_P\right),$  and
+\eq{\label{F}
+\mathcal{F}(q,\omega_P)&=\int \frac{dz}{\sqrt{2 \pi}} \frac{dt'}{\sqrt{2 \pi}} \mathcal{G}(z,t), \quad  \mathcal{G}(z,t)= \frac{\xi(z)}{L}  e^{-(z-v_P t')^2/(4 v_P^2 \tau^2)} e^{-i \Gamma(z,t')}e^{i (q z + \delta \omega_P t')}
+}
+are a 2D Fourier transform pair in the spaces $(q,\omega_P)$,  $(z,t)$ and $\Gamma=\Gamma_A+\Gamma_B-\Gamma_P$.
+
+Let us now examine what is the effect of SPM and XPM on the properties of the down-converted photons. Such properties are encoded in the joint spectral amplitude (JSA) of the photons, which, if time-ordering corrections are ignored \cite{nico1}, can be written as $J_1(\omega_A,\omega_B)=F(\omega_A,\omega_B,\omega_A+\omega_P)$; note that one can include the time-ordering corrections by considering higher order Magnus terms \cite{nico2} which are functionals of $F$ in Eq. (\ref{F}).
+One can find the Schmidt decomposition of the JSA $J_1(\omega_A,\omega_B)=\sum_\lambda s_\lambda f_\lambda (\omega_A) j_\lambda(\omega_B)$. 
+The Schmidt coefficients satisfy $\sum_\lambda s_\lambda^2=\int d \omega_A d\omega_B |J_1(\omega_A,\omega_B)|^2$. 
+XPM and SPM will modify the JSA, in particular if at low pump intensities one engineers a separable JSA, (one in which only one of the $s_\lambda$ is nonzero) at high pump intensities where one needs to include $\Gamma$ in Eq. (\ref{F}) the function will not be separable.  
+More generally, if one starts with the minimum number of Schmidt modes, then XPM and SPM will make this number grow. If one ignored XPM and SPM, one would need to consider a single Schmidt coefficient $\tilde s_0$ (we use the tilde to indicate values where SPM and XPM are ignored), whereas if one includes these effects, one needs to worry about several of them as the pump intensity is increased. These coefficients are related $\tilde s_0^2=\sum_{\lambda} s_\lambda^2$ since 
+\eq{
+\int d \omega_A d\omega_B |J_1(\omega_A,\omega_B)|^2&= \mathcal{J} \int d \omega_P dq |\mathcal{F}(q,\omega_P)|^2 = \mathcal{J}  \int dz dt|\mathcal{G}(q,\omega_P)|^2,
+}
+where $\mathcal{J}=\frac{v_A v_B}{|v_A-v_B|}$ is the Jacobian of the linear transformation $(\omega_P=\omega_A+\omega_B,q=-(\delta \omega_A/v_A+\delta \omega_B/v_B))$ and we used Parseval's theorem.
+%\left|\frac{\partial (\omega_A,\omega_B)}{\partial (\omega_P,q)} \right|
+The last equation tells us that the sum of the squared Schmidt coefficients $S=\sum_{\lambda} s_\lambda^2$ is not affected by SPM and XPM since $\Gamma$, the quantity carrying the information about XPM and SPM, disappears once one takes the magnitude of the function $\mathcal{G}$ in the last equations.
+Now, let us study what is the effect of SPM and XPM in the mean number of photons in the downconverted fields, $\braket{\hat n_{A/B}}=\sum_\lambda \sinh^2 (s_\lambda )$. We argue that this number will always be smaller than the number of photons one would expect if one ignored SPM and XPM. 
+To this end note, that the number of photons is
+%Now note that the sum of the Schmidt coefficients is essentially the norm of the function $\mathcal{G}(q,\omega_P)$ and this norm is \emph{independent} of the phase $\Gamma(z,t)$ which accounts for SPM and XPM. This implies that SPM and XPM do not change the sum of the Schmidt coefficients.
+%Note however that the mean number of photons is given by
+%\eq{
+$\sum_\lambda \sinh^2 s_\lambda \neq \sum_\lambda s_\lambda^2$
+%}
+and this quantity can be affected by SPM and XPM. In particular, if $J_1$ is made to be separable in the low intensity limit, then $\Gamma$ can increase the number of Schmidt modes, and consequently, reduce the net number of photons that one would expect if one ignored SPM and XPM since
+\eq{
+\braket{\tilde n_{A/B}}=\sum_{\lambda} \sinh^2\left( \sqrt{s_\lambda^2} \right) \leq  \sinh^2 \left( \sqrt{ \sum_{\lambda} s_\lambda^2}\right) =\sinh^2 \left( \sqrt{ \tilde s_0^2}\right)=\braket{n_{A/B}}.
+}
+
+In conclusion, we have shown that SPM and XPM will reduce the intensity of the down-converted beams by generating extra Schmidt modes that are unexpected if one considers only $\chi^2$ processes. These differences should become important in future ultra-bright quantum nonlinear optics experiments.
+%The last equation relates the mean number of photons of an initially separable JSA when one includes SPM and XPM (RHS) and ignores this contirbutions (LHS).
+\begin{thebibliography}{99}
+\bibitem{harder} G. Harder \ea, ``Single-Mode Parametric-Down-Conversion States with 50 Photons as a Source for Mesoscopic Quantum Optics'', Phys. Rev. Lett. {\bf 116}, 143601 (2016).
+\bibitem{lemieux} S. Lemieux \ea, ``Engineering the Frequency Spectrum of Bright Squeezed Vacuum via Group Velocity Dispersion in an SU(1,1) Interferometer'', Phys. Rev. Lett. {\bf 117}, 183601 (2016).
+\bibitem{nico1} N. Quesada and J.E. Sipe, ``Time-ordering effects in the generation of entangled photons using nonlinear optical processes'', Phys. Rev. Lett. {\bf 114} , 093903 (2015).
+
+\bibitem{nico2} N. Quesada and J.E. Sipe, ``Effects of time ordering in quantum nonlinear optics'', Phys. Rev. A, {\bf 90}, 063840 (2014).
+
+\end{thebibliography}
+
+
+\end{document}
