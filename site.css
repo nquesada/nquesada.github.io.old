@@ -34,7 +34,7 @@ ul>li {
 
 
 #master {
-	width: 700px;
+	width: 900px;
 	background: #FFFFFF;
 	margin: auto auto auto auto;
 	margin-top: 50px;
@@ -43,7 +43,7 @@ ul>li {
 }
 
 #headerleft {
-	width: 700;
+	width: 900;
 	margin: 0px;
 	padding: 0px;
 	padding-bottom: 3px;
@@ -92,7 +92,7 @@ a:hover
 
 #content 
 {
-	width: 700px;
+	width: 850px;
 	float: left;
 	margin: 0 auto 0 auto;
 	margin-top: 3px;
