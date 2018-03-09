@@ -6,7 +6,7 @@
 %.dvi:%.tex
 	latex $^
 	latex $^
-all: atomic.pdf  bosonic.pdf  fourier.pdf erfi.pdf normal.pdf sho.pdf shotd.pdf
+all: atomic.pdf  bosonic.pdf  fourier.pdf erfi.pdf normal.pdf sho.pdf shotd.pdf poster.pdf
 
 
 public:
