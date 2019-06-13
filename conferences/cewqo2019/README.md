@@ -1,5 +1,5 @@
 
-# My contributions to CLEO 2017
+# My contributions to CEWQO 2019
 
 This repository contains my contributions to [CEWQO2019](https://cewqo2019.uni-paderborn.de/).
 The abstracts are:
