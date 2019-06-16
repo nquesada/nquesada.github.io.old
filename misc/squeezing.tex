@@ -4,21 +4,17 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{fullpage}
-
 \newcommand{\pr}[1]{| #1 \rangle \langle #1|}
 \newcommand{\ket}[1]{| #1 \rangle}
 \newcommand{\bra}[1]{\langle #1 |}
 \newcommand{\braket}[1]{\langle #1 \rangle}
 \newcommand{\h}{\hat}
 \pagenumbering{gobble} 
-
+\usepackage{hyperref}
 %
 %\lhead{Conversion between different squeezing parameters}
 
 \begin{document}
-%\begin{center}
-%{ {\Large \bf Squeezed States }}\\
-%\end{center}
 
 \begin{table}[!h]
 \centering
@@ -26,7 +22,7 @@
 \begin{tabular}{lllll}
 \hline
 Sq.(dB) & ${\frac{V_x(r)}{V_x(0)}}$ & $\sqrt{\frac{V_x(r)}{V_x(0)}}$ & $\langle \hat n \rangle$ & $r$ \\
-%$-10 \log_{10} \frac{V_r}{V_{0}}$ & $\sinh^2(r)$ &\\
+
 \hline
 \hline
  1 & 0.794 & 0.891 & 0.0133 & 0.115 \\
@@ -57,11 +53,14 @@ Sq.(dB) & ${\frac{V_x(r)}{V_x(0)}}$ & $\sqrt{\frac{V_x(r)}{V_x(0)}}$ & $\langle 
  26 & 0.00251 & 0.0501 & 99.0 & 2.99 \\
 \hline
 \end{tabular}
+} \\
+ {\small Squeezed states:
+$\ket{r} =\exp\left(\frac{r}{2} (a^{\dagger 2}-a^2) \right)\ket{0} = \frac{1}{\sqrt{\cosh{r}}} \sum_{n=0}^\infty \frac{\sqrt{(2n)!}}{2^n n!} \tanh^n(r) \ket{2n}$. \\
+Variances: $V_x(r)/V_x(0) = e^{2r} = V_p(0)/V_p(r)$.  Squeezing level in dB: $-10 \log_{10} \frac{V_x(r)}{V_x(0)}$ \\
+Photon number moments: $\langle \hat n \rangle  = \langle \hat a^\dagger \hat a \rangle  = \sinh^2 r$, $\langle \hat n^2 \rangle = 3 \langle \hat n \rangle ^2 + 2 \langle \hat n \rangle$. \\
+Pair number distribution $N=2n$: with PMF $p(N=2n) = |\braket{2n|r}|^2$ has a negative binomial distribution $\text{NB}\left(r=\tfrac{1}{2},p = 1-\tanh^2 r\right)$. This file can be found at \url{https://nquesada.github.io/misc/squeezing.pdf}
 }
-\caption{ Squeezed states:
-$\ket{r} =\exp\left(\frac{r}{2} (a^2 - a^{\dagger 2}) \right)\ket{0} = \frac{1}{\sqrt{\cosh{r}}} \sum_{n=0}^\infty \frac{\sqrt{(2n)!}}{2^n n!} \tanh^n(r) \ket{2n}$ \\
-Variances: $V_x(r)/V_x(0) = e^{-2r} = V_p(0)/V_p(r)$.  Squeezing level in dB: $-10 \log_{10} \frac{V_x(r)}{V_x(0)}$ \\
-Mean photon number $\langle \hat n \rangle  = \sinh^2 r$, $\hat n =\hat a^\dagger \hat a$ . $[\hat a,\hat a^\dagger] =1$, $\ket{n} = \frac{(\hat a^{\dagger})^n}{\sqrt{n!}} \ket{0}$}
+
 \end{table}
 
 
