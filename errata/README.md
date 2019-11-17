@@ -1,5 +1,4 @@
 # Errata
-========
 
 This page lists errata from some of my papers.
 
