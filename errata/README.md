@@ -1,1 +1,9 @@
-Hi
+# Errata
+========
+
+This page lists errata from some of my papers.
+
+* Gaussian functions are optimal for waveguided nonlinear-quantum-optical processes [Phys. Rev. A, 98:043813, (2018)](https://link.aps.org/doi/10.1103/PhysRevA.98.043813), [erratum](./gaussian_jsa.pdf).
+
+* Why you should not use the electric field to quantize in nonlinear optics [Opt. Lett., 42:3443–3446, (2017)](http://ol.osa.org/abstract.cfm?URI=
+ol-42-17-3443), [erratum](./not_quantize_electric.pdf).
