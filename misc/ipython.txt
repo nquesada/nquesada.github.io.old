@@ -1,13 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-%matplotlib inline
 %config InlineBackend.figure_formats=['svg']
-from IPython.core.display import display, HTML
-display(HTML("<style>"
-    + "#notebook { padding-top:0px !important; } "
-    + ".container { width:100% !important; } "
-    + ".end_space { min-height:0px !important; } "
-    + "</style>"))
 np.set_printoptions(linewidth=200)
 #import importlib
 #importlib.reload(module) 
