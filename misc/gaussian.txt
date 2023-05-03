@@ -5,3 +5,5 @@ GaussianIntegrator[{coeff_, exp_}, var_] :=
     cc -> 0}]
 
 gi=GaussianIntegrator
+
+psi[n_,x_]:=Sqrt[1/(2^n n! Sqrt[Pi])] Exp[-x^2/2] HermiteH[n,x]
