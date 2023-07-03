@@ -1,0 +1,67 @@
+\documentclass[english,12pt]{shreyasnotes}
+
+\usepackage{esint}
+\usepackage{bm}
+\newcommand{\eq}[1]{\begin{align}#1\end{align}}
+
+
+\title{Commonly used matrix \\ decompositions in Quantum Optics}
+\author{Nicol\'as Quesada}
+\date{}
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+This documents aims to provide recipes to compute certain decomposition that are commonly used when doing (Gaussian) quantum optics.
+
+
+\emph{TODO}: Add acknowledgement and bibliography and historical background.
+
+\section{Takagi (Autonne)}
+Given a symmetric (and in general complex) matrix $\bm{M} = \bm{M}^T \in \mathbb{C}^{\ell \times \ell}$ its Takagi (Autonne) decomposition is given by
+\begin{align}\label{def:takagi}
+\bm{M} = \bm{W} \bm{\Lambda} \bm{W}^T,\quad  \bm{\Lambda} =  \left[ \oplus_{i=1}^\ell \lambda_i \right]
+\end{align}
+where $\bm{W}$ is unitary, $\bm{W}\bm{W}^\dagger = \mathbb{1}_\ell$ and $\lambda_i \geq 0$. This decomposition is a singular value decomposition (SVD), albeit one with a special symmetry that makes explicit that the matrix being decomposed is symmetric, indeed the decomposition in the right-hand side of the Eq.~\eqref{def:takagi} makes explicit that the object in the left hand side is symmetric.
+
+To obtain the decomposition we first obtain an SVD of $\bm{M}$
+\begin{align}\label{svd}
+\bm{M} = \bm{U} \bm{\Lambda} \bm{V}^\dagger
+\end{align}
+For arbitrary matrices there is nothing we can about the relation between the unitary matrices $\bm{U}$ and $\bm{V}$. However, $\bm{M}$ is no arbitrary matrix and indeed we will show that for \emph{symmetric} $\bm{M}$ is holds that $\bm{V}^T \bm{U}$ is a \emph{diagonal} unitary matrix, i.e.,
+\begin{align}\label{eq:diagprof}
+e^{i \bm{\Phi}} &= \bm{V}^T \bm{U} = \bm{U}^T \bm{V} = \oplus_{j=1}^\ell e^{i \phi_j }. 
+\end{align}
+Note that the equation above can be easily manipulated to give
+\begin{align}\label{lemma}
+\bm{U}^T = e^{i \bm{\Phi}} \bm{V}^\dagger \longleftrightarrow e^{-i \bm{\Phi}/2} \bm{U}^T = e^{i \bm{\Phi}/2} \bm{V}^\dagger  \longleftrightarrow \left(\bm{U} e^{-i \bm{\Phi}/2} \right)^T =  e^{i \bm{\Phi}/2} \bm{V}^\dagger
+\end{align}
+Once we establish the equation above the Takagi-Autonne decomposition simply follows from manipulating the SVD
+\begin{align}
+\bm{M} =& \bm{U} \bm{\Lambda} \bm{V}^\dagger = \bm{U} e^{-i \bm{\Phi}/ 2} e^{i \bm{\Phi}/ 2} \bm{\Lambda} \bm{V}^\dagger = \bm{U} e^{-i \bm{\Phi}/ 2}  \bm{\Lambda} e^{i \bm{\Phi}/ 2} \bm{V}^\dagger  
+\\=& \bm{U} e^{-i \bm{\Phi}/ 2}  \bm{\Lambda} e^{i \bm{\Phi}/ 2} \bm{V}^\dagger =  \bm{U} e^{-i \bm{\Phi}/ 2}  \bm{\Lambda} (\bm{U} e^{-i \bm{\Phi}/ 2} )^T
+\end{align}
+From which we identity relative Eq.~\eqref{def:takagi} that 
+\begin{align}
+\bm{W} = \bm{U} e^{-i \bm{\Phi}/ 2}  = \bm{U} \sqrt{\bm{U}^T \bm{V}}
+\end{align}
+
+To see why the $\bm{W}$ above corresponds to the matrix giving the correct decomposition in Eq.~\eqref{def:takagi} note that the following matrix is symmetric
+\begin{align}
+\bm{L} = \bm{L}^T = \bm{V}^T \bm{M} \bm{V} = \bm{V}^T \bm{U} \bm{\Lambda}
+\end{align}
+and moreover we easily find
+\begin{align}
+\bm{L}^\dagger \bm{L} &= \bm{V}^\dagger \bm{M}^\dagger \bm{V}^*  = \bm{V}^\dagger \bm{M}^\dagger \bm{M} \bm{V} =  \bm{\Lambda}\\
+\bm{L}\bm{L}^\dagger &=  \bm{V}^T \bm{M} \bm{V} \bm{V}^\dagger \bm{M}^\dagger \bm{V}^* = \bm{V}^T \bm{M} \bm{M} ^\dagger \bm{V}^* = (\bm{V}^\dagger \bm{M}^\dagger \bm{M}  \bm{V})^* =    \bm{\Lambda}^* =  \bm{\Lambda}
+\end{align}
+The two equations above imply that $\bm{L}$ must be a complex diagonal matrix of the form
+\begin{align}
+\bm{L} = \left[\oplus_{j=1}^\ell e^{i \phi_j } \right] \bm{\Lambda} =  e^{i \bm{\Phi}} \bm{\Lambda}
+\end{align}
+From which it follows that $\bm{V}^T \bm{U}$ is diagonal, as claimed. This derivation follows the presentation of Caves~\cite{cavesnote}.
+\section{Bloch-Messiah (Euler) }
+
+\section{Williamson}
+
+\end{document}
